@@ -1,0 +1,13 @@
+# Solace Agent Mesh
+solace-agent-mesh~=1.13.6
+
+# Database
+asyncpg>=0.29.0  # Async PostgreSQL driver
+psycopg2-binary>=2.9.9  # Sync PostgreSQL (for migrations/testing)
+
+# Supabase
+supabase>=2.10.0  # Supabase Python client
+
+# JWT Authentication
+pyjwt>=2.8.0  # JWT decoding
+cryptography>=41.0.0  # For JWT verification
