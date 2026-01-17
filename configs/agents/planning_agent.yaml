@@ -1,0 +1,101 @@
+# Solace Agent Mesh - Planning Agent Configuration
+
+log:
+  stdout_log_level: INFO
+  log_file_level: INFO
+  log_file: planning_agent.log
+
+# Shared SAM config
+!include ../shared_config.yaml
+
+apps:
+  - name: planning_agent_app
+    app_base_path: .
+    app_module: solace_agent_mesh.agent.sac.app
+    broker:
+      <<: *broker_connection
+
+    app_config:
+      namespace: ${NAMESPACE}
+      supports_streaming: true
+      agent_name: "planning_agent"
+      display_name: "Planning Agent"
+      model: *planning_model
+
+      instruction: |
+        You are the Planning Agent for Unwind. Your role is to help users plan their day based on their anxiety type and capacity.
+        
+        Key Principles:
+        1. ALWAYS check user's anxiety_type first
+        2. For "overwhelmed" users: Suggest MAX 3 items per day
+        3. For "racing_thoughts": Focus on quick wins and breaking down large tasks
+        4. For "intrusive_worries": Acknowledge worries, separate actionable from non-actionable
+        
+        5. Use completion_history to understand user's realistic capacity
+        6. Prioritize by urgency + importance + emotional_weight
+        7. Never overwhelm - less is more
+        
+        Output Format:
+        - "Based on your patterns, I suggest focusing on [X] items today:"
+        - List items with WHY they're priorities
+        - Acknowledge what you're NOT suggesting (so user feels safe)
+
+      inject_system_purpose: true
+      inject_response_format: true
+      inject_user_profile: true
+      
+      session_service:
+        type: "sql"
+        database_url: "${PLANNING_AGENT_DATABASE_URL, sqlite:///planning_agent.db}"
+        default_behavior: "PERSISTENT"
+      
+      artifact_service: *default_artifact_service
+      artifact_handling_mode: "reference"
+      enable_embed_resolution: true
+      enable_artifact_content_instruction: true
+      
+      tools:
+        # Planning Agent Tools (3 tools)
+        - tool_type: python
+          component_module: src.shared.tools
+          function_name: get_user_stats
+        - tool_type: python
+          component_module: src.shared.tools
+          function_name: get_completion_history
+        - tool_type: python
+          component_module: src.shared.tools
+          function_name: count_pending_by_priority
+        
+        # Shared Tools (3 tools)
+        - tool_type: python
+          component_module: src.shared.tools
+          function_name: mark_item_complete
+        - tool_type: python
+          component_module: src.shared.tools
+          function_name: update_item_priority
+        - tool_type: python
+          component_module: src.shared.tools
+          function_name: add_note_to_item
+
+      agent_card:
+        description: "Planning agent for Unwind. Provides anxiety-aware task planning and capacity analysis."
+        defaultInputModes: [text]
+        defaultOutputModes: [text]
+        skills:
+        - id: anxiety_aware_planning
+          name: Anxiety-Aware Planning
+          description: Creates daily plans tailored to user's anxiety type, suggesting max 3 items for overwhelmed users and focusing on realistic capacity.
+        
+        - id: capacity_analysis
+          name: Capacity Analysis
+          description: Analyzes user's completion history and current pending items to understand realistic capacity and suggest appropriate workload.
+
+      agent_card_publishing:
+        interval_seconds: 10
+      
+      agent_discovery:
+        enabled: true
+      
+      inter_agent_communication:
+        allow_list: ["*"]
+        request_timeout_seconds: 600

@@ -1,0 +1,300 @@
+﻿   Location: app_config.tools.2.function-after[validate_tool_filtering(), McpToolConfig].tool_type
+   Description: UNKNOWN
+
+ERROR 23:
+   Missing required field: 'connection_params'
+   Location: app_config.tools.2.function-after[validate_tool_filtering(), McpToolConfig].connection_params
+   Description: UNKNOWN
+
+ERROR 24:
+   Error: Input should be 'openapi'
+   Location: app_config.tools.2.function-after[validate_tool_filtering(), OpenApiToolConfig].tool_type
+   Description: UNKNOWN
+
+ERROR 25:
+   Error: Input should be 'builtin'
+   Location: app_config.tools.3.BuiltinToolConfig.tool_type
+   Description: UNKNOWN
+
+ERROR 26:
+   Missing required field: 'tool_name'
+   Location: app_config.tools.3.BuiltinToolConfig.tool_name
+   Description: UNKNOWN
+
+ERROR 27:
+   Error: Input should be 'builtin-group'
+   Location: app_config.tools.3.BuiltinGroupToolConfig.tool_type
+   Description: UNKNOWN
+
+ERROR 28:
+   Missing required field: 'group_name'
+   Location: app_config.tools.3.BuiltinGroupToolConfig.group_name
+   Description: UNKNOWN
+
+ERROR 29:
+   Missing required field: 'component_module'
+   Location: app_config.tools.3.PythonToolConfig.component_module
+   Description: UNKNOWN
+
+ERROR 30:
+   Error: Input should be 'mcp'
+   Location: app_config.tools.3.function-after[validate_tool_filtering(), McpToolConfig].tool_type
+   Description: UNKNOWN
+
+ERROR 31:
+   Missing required field: 'connection_params'
+   Location: app_config.tools.3.function-after[validate_tool_filtering(), McpToolConfig].connection_params
+   Description: UNKNOWN
+
+ERROR 32:
+   Error: Input should be 'openapi'
+   Location: app_config.tools.3.function-after[validate_tool_filtering(), OpenApiToolConfig].tool_type
+   Description: UNKNOWN
+
+ERROR 33:
+   Error: Input should be 'builtin'
+   Location: app_config.tools.4.BuiltinToolConfig.tool_type
+   Description: UNKNOWN
+
+ERROR 34:
+   Missing required field: 'tool_name'
+   Location: app_config.tools.4.BuiltinToolConfig.tool_name
+   Description: UNKNOWN
+
+ERROR 35:
+   Error: Input should be 'builtin-group'
+   Location: app_config.tools.4.BuiltinGroupToolConfig.tool_type
+   Description: UNKNOWN
+
+ERROR 36:
+   Missing required field: 'group_name'
+   Location: app_config.tools.4.BuiltinGroupToolConfig.group_name
+   Description: UNKNOWN
+
+ERROR 37:
+   Missing required field: 'component_module'
+   Location: app_config.tools.4.PythonToolConfig.component_module
+   Description: UNKNOWN
+
+ERROR 38:
+   Error: Input should be 'mcp'
+   Location: app_config.tools.4.function-after[validate_tool_filtering(), McpToolConfig].tool_type
+   Description: UNKNOWN
+
+ERROR 39:
+   Missing required field: 'connection_params'
+   Location: app_config.tools.4.function-after[validate_tool_filtering(), McpToolConfig].connection_params
+   Description: UNKNOWN
+
+ERROR 40:
+   Error: Input should be 'openapi'
+   Location: app_config.tools.4.function-after[validate_tool_filtering(), OpenApiToolConfig].tool_type
+   Description: UNKNOWN
+
+ERROR 41:
+   Error: Input should be 'builtin'
+   Location: app_config.tools.5.BuiltinToolConfig.tool_type
+   Description: UNKNOWN
+
+ERROR 42:
+   Missing required field: 'tool_name'
+   Location: app_config.tools.5.BuiltinToolConfig.tool_name
+   Description: UNKNOWN
+
+ERROR 43:
+   Error: Input should be 'builtin-group'
+   Location: app_config.tools.5.BuiltinGroupToolConfig.tool_type
+   Description: UNKNOWN
+
+ERROR 44:
+   Missing required field: 'group_name'
+   Location: app_config.tools.5.BuiltinGroupToolConfig.group_name
+   Description: UNKNOWN
+
+ERROR 45:
+   Missing required field: 'component_module'
+   Location: app_config.tools.5.PythonToolConfig.component_module
+   Description: UNKNOWN
+
+ERROR 46:
+   Error: Input should be 'mcp'
+   Location: app_config.tools.5.function-after[validate_tool_filtering(), McpToolConfig].tool_type
+   Description: UNKNOWN
+
+ERROR 47:
+   Missing required field: 'connection_params'
+   Location: app_config.tools.5.function-after[validate_tool_filtering(), McpToolConfig].connection_params
+   Description: UNKNOWN
+
+ERROR 48:
+   Error: Input should be 'openapi'
+   Location: app_config.tools.5.function-after[validate_tool_filtering(), OpenApiToolConfig].tool_type
+   Description: UNKNOWN
+
+ERROR 49:
+   Error: Input should be 'builtin'
+   Location: app_config.tools.6.BuiltinToolConfig.tool_type
+   Description: UNKNOWN
+
+ERROR 50:
+   Missing required field: 'tool_name'
+   Location: app_config.tools.6.BuiltinToolConfig.tool_name
+   Description: UNKNOWN
+
+ERROR 51:
+   Error: Input should be 'builtin-group'
+   Location: app_config.tools.6.BuiltinGroupToolConfig.tool_type
+   Description: UNKNOWN
+
+ERROR 52:
+   Missing required field: 'group_name'
+   Location: app_config.tools.6.BuiltinGroupToolConfig.group_name
+   Description: UNKNOWN
+
+ERROR 53:
+   Missing required field: 'component_module'
+   Location: app_config.tools.6.PythonToolConfig.component_module
+   Description: UNKNOWN
+
+ERROR 54:
+   Error: Input should be 'mcp'
+   Location: app_config.tools.6.function-after[validate_tool_filtering(), McpToolConfig].tool_type
+   Description: UNKNOWN
+
+ERROR 55:
+   Missing required field: 'connection_params'
+   Location: app_config.tools.6.function-after[validate_tool_filtering(), McpToolConfig].connection_params
+   Description: UNKNOWN
+
+ERROR 56:
+   Error: Input should be 'openapi'
+   Location: app_config.tools.6.function-after[validate_tool_filtering(), OpenApiToolConfig].tool_type
+   Description: UNKNOWN
+
+ERROR 57:
+   Error: Input should be 'builtin'
+   Location: app_config.tools.7.BuiltinToolConfig.tool_type
+   Description: UNKNOWN
+
+ERROR 58:
+   Missing required field: 'tool_name'
+   Location: app_config.tools.7.BuiltinToolConfig.tool_name
+   Description: UNKNOWN
+
+ERROR 59:
+   Error: Input should be 'builtin-group'
+   Location: app_config.tools.7.BuiltinGroupToolConfig.tool_type
+   Description: UNKNOWN
+
+ERROR 60:
+   Missing required field: 'group_name'
+   Location: app_config.tools.7.BuiltinGroupToolConfig.group_name
+   Description: UNKNOWN
+
+ERROR 61:
+   Missing required field: 'component_module'
+   Location: app_config.tools.7.PythonToolConfig.component_module
+   Description: UNKNOWN
+
+ERROR 62:
+   Error: Input should be 'mcp'
+   Location: app_config.tools.7.function-after[validate_tool_filtering(), McpToolConfig].tool_type
+   Description: UNKNOWN
+
+ERROR 63:
+   Missing required field: 'connection_params'
+   Location: app_config.tools.7.function-after[validate_tool_filtering(), McpToolConfig].connection_params
+   Description: UNKNOWN
+
+ERROR 64:
+   Error: Input should be 'openapi'
+   Location: app_config.tools.7.function-after[validate_tool_filtering(), OpenApiToolConfig].tool_type
+   Description: UNKNOWN
+
+ERROR 65:
+   Error: Input should be 'builtin'
+   Location: app_config.tools.8.BuiltinToolConfig.tool_type
+   Description: UNKNOWN
+
+ERROR 66:
+   Missing required field: 'tool_name'
+   Location: app_config.tools.8.BuiltinToolConfig.tool_name
+   Description: UNKNOWN
+
+ERROR 67:
+   Error: Input should be 'builtin-group'
+   Location: app_config.tools.8.BuiltinGroupToolConfig.tool_type
+   Description: UNKNOWN
+
+ERROR 68:
+   Missing required field: 'group_name'
+   Location: app_config.tools.8.BuiltinGroupToolConfig.group_name
+   Description: UNKNOWN
+
+ERROR 69:
+   Missing required field: 'component_module'
+   Location: app_config.tools.8.PythonToolConfig.component_module
+   Description: UNKNOWN
+
+ERROR 70:
+   Error: Input should be 'mcp'
+   Location: app_config.tools.8.function-after[validate_tool_filtering(), McpToolConfig].tool_type
+   Description: UNKNOWN
+
+ERROR 71:
+   Missing required field: 'connection_params'
+   Location: app_config.tools.8.function-after[validate_tool_filtering(), McpToolConfig].connection_params
+   Description: UNKNOWN
+
+ERROR 72:
+   Error: Input should be 'openapi'
+   Location: app_config.tools.8.function-after[validate_tool_filtering(), OpenApiToolConfig].tool_type
+   Description: UNKNOWN
+
+ERROR 73:
+   Error: Input should be 'builtin'
+   Location: app_config.tools.9.BuiltinToolConfig.tool_type
+   Description: UNKNOWN
+
+ERROR 74:
+   Missing required field: 'tool_name'
+   Location: app_config.tools.9.BuiltinToolConfig.tool_name
+   Description: UNKNOWN
+
+ERROR 75:
+   Error: Input should be 'builtin-group'
+   Location: app_config.tools.9.BuiltinGroupToolConfig.tool_type
+   Description: UNKNOWN
+
+ERROR 76:
+   Missing required field: 'group_name'
+   Location: app_config.tools.9.BuiltinGroupToolConfig.group_name
+   Description: UNKNOWN
+
+ERROR 77:
+   Missing required field: 'component_module'
+   Location: app_config.tools.9.PythonToolConfig.component_module
+   Description: UNKNOWN
+
+ERROR 78:
+   Error: Input should be 'mcp'
+   Location: app_config.tools.9.function-after[validate_tool_filtering(), McpToolConfig].tool_type
+   Description: UNKNOWN
+
+ERROR 79:
+   Missing required field: 'connection_params'
+   Location: app_config.tools.9.function-after[validate_tool_filtering(), McpToolConfig].connection_params
+   Description: UNKNOWN
+
+ERROR 80:
+   Error: Input should be 'openapi'
+   Location: app_config.tools.9.function-after[validate_tool_filtering(), OpenApiToolConfig].tool_type
+   Description: UNKNOWN
+
+---- Please update your YAML configuration ----
+
+2026-01-17 06:37:48,540 | WARNING | MainThread | solace_ai_connector.main | Stopping Solace AI Connector
+2026-01-17 06:37:48,540 | INFO  | MainThread | solace_ai_connector.solace_ai_connector | Stopping Solace AI Event Connector
+2026-01-17 06:37:48,742 | INFO  | MainThread | solace_ai_connector.solace_ai_connector | Cleaning up Solace AI Event Connector
+2026-01-17 06:37:48,742 | INFO  | MainThread | solace_ai_connector.solace_ai_connector | Cleanup completed
+2026-01-17 06:37:48,743 | WARNING | MainThread | solace_ai_connector.main | Solace AI Connector exited successfully!

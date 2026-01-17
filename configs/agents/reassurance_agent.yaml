@@ -1,0 +1,104 @@
+# Solace Agent Mesh - Reassurance Agent Configuration
+
+log:
+  stdout_log_level: INFO
+  log_file_level: INFO
+  log_file: reassurance_agent.log
+
+# Shared SAM config
+!include ../shared_config.yaml
+
+apps:
+  - name: reassurance_agent_app
+    app_base_path: .
+    app_module: solace_agent_mesh.agent.sac.app
+    broker:
+      <<: *broker_connection
+
+    app_config:
+      namespace: ${NAMESPACE}
+      supports_streaming: true
+      agent_name: "reassurance_agent"
+      display_name: "Reassurance Agent"
+      model: *planning_model
+
+      instruction: |
+        You are the Reassurance Agent for Unwind. Your role is to provide compassionate, validating support for users with anxiety.
+        
+        Key Principles:
+        1. VALIDATE, don't dismiss - "That feeling is real" not "Don't worry"
+        2. Use EVIDENCE from their completion history - "You've done this 4 times before"
+        3. Identify worry spirals using spiral_breakdown data
+        4. Break catastrophizing chains ("what if X → Y → Z" patterns)
+        5. Acknowledge uncertainty is hard, but remind them of their actual track record
+        
+        Tone:
+        - Warm, supportive, never judgmental
+        - Specific (reference actual completions)
+        - Honest about uncertainty
+        - Empowering ("You can handle this")
+        
+        Example:
+        User: "I'm spiraling about the presentation"
+        You: "I see you're worried about the presentation tomorrow. That anxiety is real and valid.
+        
+        Looking at your spiral, I notice a 'what if' chain: fail → lose job → can't pay rent. That's your anxiety talking, not reality.
+        
+        Here's what I know: You've completed 4 presentations in the past 3 months. Each time you felt anxious beforehand, and each time you did it. Your track record shows you can handle this."
+
+      inject_system_purpose: true
+      inject_response_format: true
+      inject_user_profile: true
+      
+      session_service:
+        type: "sql"
+        database_url: "${REASSURANCE_AGENT_DATABASE_URL, sqlite:///reassurance_agent.db}"
+        default_behavior: "PERSISTENT"
+      
+      artifact_service: *default_artifact_service
+      artifact_handling_mode: "reference"
+      enable_embed_resolution: true
+      enable_artifact_content_instruction: true
+      
+      tools:
+        # Reassurance Agent Tools (2 tools)
+        - tool_type: python
+          component_module: src.shared.tools
+          function_name: get_spiral_items
+        - tool_type: python
+          component_module: src.shared.tools
+          function_name: get_recent_completions
+        
+        # Shared Tools (3 tools)
+        - tool_type: python
+          component_module: src.shared.tools
+          function_name: mark_item_complete
+        - tool_type: python
+          component_module: src.shared.tools
+          function_name: update_item_priority
+        - tool_type: python
+          component_module: src.shared.tools
+          function_name: add_note_to_item
+
+      agent_card:
+        description: "Reassurance agent for Unwind. Provides compassionate support with evidence-based reassurance for users with anxiety."
+        defaultInputModes: [text]
+        defaultOutputModes: [text]
+        skills:
+        - id: compassionate_support
+          name: Compassionate Support
+          description: Validates user feelings and provides warm, empowering support without dismissing anxiety or uncertainty.
+        
+        - id: evidence_based_reassurance
+          name: Evidence-Based Reassurance
+          description: Uses actual completion history and worry spiral analysis to provide specific, reality-based reassurance and break catastrophizing patterns.
+
+      agent_card_publishing:
+        interval_seconds: 10
+      
+      agent_discovery:
+        enabled: true
+      
+      inter_agent_communication:
+        allow_list: ["*"]
+        request_timeout_seconds: 600

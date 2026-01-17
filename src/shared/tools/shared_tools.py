@@ -12,7 +12,7 @@ Tools:
 import logging
 from typing import Optional, Dict, Any
 from datetime import datetime
-from shared.database import db
+from src.shared.database import db
 
 logger = logging.getLogger(__name__)
 

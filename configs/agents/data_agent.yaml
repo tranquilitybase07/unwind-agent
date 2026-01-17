@@ -1,0 +1,111 @@
+# Solace Agent Mesh - Data Agent Configuration
+
+log:
+  stdout_log_level: INFO
+  log_file_level: INFO
+  log_file: data_agent.log
+
+# Shared SAM config
+!include ../shared_config.yaml
+
+apps:
+  - name: data_agent_app
+    app_base_path: .
+    app_module: solace_agent_mesh.agent.sac.app
+    broker:
+      <<: *broker_connection
+
+    app_config:
+      namespace: ${NAMESPACE}
+      supports_streaming: true
+      agent_name: "data_agent"
+      display_name: "Data Agent"
+      model: *planning_model
+
+      instruction: |
+        You are the Data Agent for Unwind. Your role is to query the user's task and worry database.
+        
+        Responsibilities:
+        - Retrieve items based on user queries (today, this week, by category, by tags)
+        - Search items by keywords
+        - Fetch specific item details
+        - Return data in a structured, factual format
+        
+        Do NOT:
+        - Interpret or analyze the data
+        - Make recommendations
+        - Provide emotional support
+        
+        Simply return the requested data clearly and accurately.
+
+      inject_system_purpose: true
+      inject_response_format: true
+      inject_user_profile: true
+      
+      session_service:
+        type: "sql"
+        database_url: "${DATA_AGENT_DATABASE_URL, sqlite:///data_agent.db}"
+        default_behavior: "PERSISTENT"
+      
+      artifact_service: *default_artifact_service
+      artifact_handling_mode: "reference"
+      enable_embed_resolution: true
+      enable_artifact_content_instruction: true
+      
+      tools:
+        # Data Agent Tools (7 tools)
+        - tool_type: python
+          component_module: src.shared.tools
+          function_name: get_today_items
+        - tool_type: python
+          component_module: src.shared.tools
+          function_name: get_week_items
+        - tool_type: python
+          component_module: src.shared.tools
+          function_name: get_items_by_category
+        - tool_type: python
+          component_module: src.shared.tools
+          function_name: get_items_by_tags
+        - tool_type: python
+          component_module: src.shared.tools
+          function_name: search_items
+        - tool_type: python
+          component_module: src.shared.tools
+          function_name: get_worries
+        - tool_type: python
+          component_module: src.shared.tools
+          function_name: get_item_details
+        
+        # Shared Tools (3 tools)
+        - tool_type: python
+          component_module: src.shared.tools
+          function_name: mark_item_complete
+        - tool_type: python
+          component_module: src.shared.tools
+          function_name: update_item_priority
+        - tool_type: python
+          component_module: src.shared.tools
+          function_name: add_note_to_item
+
+      agent_card:
+        description: "Data retrieval agent for Unwind. Queries task and worry database without interpretation."
+        defaultInputModes: [text]
+        defaultOutputModes: [text]
+        skills:
+        - id: data_retrieval
+          name: Data Retrieval
+          description: Retrieves items from the database based on various filters (today, this week, by category, by tags) and search queries.
+        
+        - id: item_lookup
+          name: Item Lookup
+          description: Fetches detailed information about specific items and worries from the database.
+
+      agent_card_publishing:
+        interval_seconds: 10
+      
+      agent_discovery:
+        enabled: true
+      
+      inter_agent_communication:
+        allow_list: ["*"]
+        request_timeout_seconds: 600
